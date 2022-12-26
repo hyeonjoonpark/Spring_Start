@@ -84,3 +84,7 @@
 
 #### 문자이면 : StringConverter
 #### 객체이면 : JsonConverter
+
+##
+## 비즈니스 요구사항 정리
+#### 
