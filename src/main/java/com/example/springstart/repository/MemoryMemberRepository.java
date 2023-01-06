@@ -2,32 +2,26 @@ package com.example.springstart.repository;
 
 
 import com.example.springstart.domain.Member;
-
 import java.util.*;
 import java.util.Optional;
-import java.util.List;
 
-public class MemoryMemberRepository implements MemberRepository {
+
+public class MemoryMemberRepository implements MemberRepository<Member> {
 
     private static Map<Long, Member> store = new HashMap<>();
     private static long sequence = 0L;
 
 
     @Override
-    public Member save(Member member){
+    public Member save(Member member) {
         member.setId(++sequence);
         store.put((long) member.getId(), member);
         return member;
     }
 
-
-    public Object save(Object o) {
-        return null;
-    }
-
     @Override
-    public Optinal<Member> findById(Long id) {
-        return Optinal.ofNullable((java.lang.reflect.Member) store.get(id));
+    public Optional<Member> findById(Long id) {
+        return Optional.ofNullable(store.get(id));
     }
 
     @Override
@@ -40,5 +34,9 @@ public class MemoryMemberRepository implements MemberRepository {
     @Override
     public List<Member> findAll() {
         return new ArrayList<>(store.values());
+    }
+
+    public void clearStore() {
+        store.clear();
     }
 }

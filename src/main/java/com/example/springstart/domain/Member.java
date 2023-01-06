@@ -1,5 +1,7 @@
 package com.example.springstart.domain;
 
+import com.example.springstart.repository.MemberRepository;
+
 public class Member {
     private Long id;
     private String name;
